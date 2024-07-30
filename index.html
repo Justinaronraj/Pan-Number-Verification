@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PAN Card Number Verification</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  display: grid;
+  place-content:center;
+}
+
+#pan-form {
+  width: 350px;
+  margin: 40px 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#pan-number{
+  width: 100%;
+  height: 40px;
+  /* padding: 10px; */
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+#pan-number:hover{
+    border: 1px solid #aaa;
+}
+#pan-number:focus{
+    box-shadow: 2px 2px 5px 5px rgb(141, 141, 166);
+}
+
+#verify {
+  margin-top: 10px;
+  
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#verify:hover {
+  background-color: #3e8e41;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+}
+.panverify{
+    margin-top: 150px;
+}
+</style>
+</head>
+<body>
+    <div class="panverify">
+
+  <h1>PAN Card Number Verification</h1>
+  <form id="pan-form">
+    <label for="pan-number">Enter PAN Card Number:</label>
+    <input type="text" id="pan-number" name="pan-number" maxlength="10">
+    <button id="verify">Verify</button>
+    <div id="result"></div>
+  </form>
+</div>
+  <script>
+    const panForm = document.getElementById('pan-form');
+const panNumberInput = document.getElementById('pan-number');
+const verifyBtn = document.getElementById('verify');
+const resultDiv = document.getElementById('result');
+
+verifyBtn.addEventListener('click', verifyPanNumber);
+
+function verifyPanNumber() {
+  const panNumber = panNumberInput.value;
+  const panRegex = /^[A-Z]{5}\d{4}[A-Z]{1}$/;
+
+  if (panRegex.test(panNumber)) {
+    
+    window.alert("valid PAN Number");
+  } else {
+    window.alert("Invalid PAN Number");
+  }
+}
+  </script>
+</body>
+</html>
